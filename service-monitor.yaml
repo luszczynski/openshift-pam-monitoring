@@ -1,0 +1,22 @@
+kind: ServiceMonitor
+metadata:
+  labels:
+    team: frontend
+  name: rhpam-service-monitor
+spec:
+  endpoints:
+  - basicAuth:
+      password:
+        key: password
+        name: basic-auth
+      username:
+        key: username
+        name: basic-auth
+    path: /services/rest/metrics
+    port: web
+  namespaceSelector:
+    matchNames:
+    - rhpam
+  selector:
+    matchLabels:
+      metrics: rhpam
